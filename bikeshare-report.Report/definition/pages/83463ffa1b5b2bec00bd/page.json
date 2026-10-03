@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "83463ffa1b5b2bec00bd",
+  "displayName": "Динамика",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "187L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "fa67867d100ace897025",
+      "target": "39ac8c74724a57e3dc01",
+      "type": "NoFilter"
+    },
+    {
+      "source": "fa67867d100ace897025",
+      "target": "a4d9bd447dbe1b37919a",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+table Календарь
+	lineageTag: 48668f04-41ca-413d-b0a5-3f03224f27e5
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: a63c68af-e3f7-4787-8707-01e066081b87
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Год
+		formatString: 0
+		lineageTag: 24428421-cee7-4a87-b81e-adbe43d04661
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Год]
+
+		annotation SummarizationSetBy = User
+
+	column Квартал
+		lineageTag: 996a98f8-b691-48e5-a6c9-ac52d0cc7a53
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Квартал]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Номер месяца'
+		formatString: 0
+		lineageTag: baff3173-250a-4081-ad13-ec1e10475473
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Номер месяца]
+
+		annotation SummarizationSetBy = User
+
+	column Месяц
+		lineageTag: f76f4565-eef3-4289-a424-331af71380a8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Месяц]
+		sortByColumn: 'Номер месяца'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Номер дня недели'
+		formatString: 0
+		lineageTag: 214e0bba-93e8-4e86-913d-85854a005611
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Номер дня недели]
+
+		annotation SummarizationSetBy = User
+
+	column 'День недели'
+		lineageTag: 139c6463-71bb-4568-b2a0-913bf4acc3a6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [День недели]
+		sortByColumn: 'Номер дня недели'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Год-Месяц
+		lineageTag: 4f21f20b-0ac2-48d1-bf61-5e36ba2163bf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Год-Месяц]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Календарь = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(MIN(bikeshare_trips[Дата начала]), MAX(bikeshare_trips[Дата начала])),
+				    "Год", YEAR([Date]),
+				    "Квартал", "Q" & QUARTER([Date]),
+				    "Номер месяца", MONTH([Date]),
+				    "Месяц", FORMAT([Date], "MMM"),
+				    "Номер дня недели", WEEKDAY([Date], 2),
+				    "День недели", FORMAT([Date], "ddd"),
+				    "Год-Месяц", FORMAT([Date], "YYYY-MM")
+				)
+
+	annotation PBI_Id = dd90c2f25eaf4fec8c7d25406beaa89f
+

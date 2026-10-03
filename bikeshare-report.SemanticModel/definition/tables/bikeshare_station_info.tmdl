@@ -1,0 +1,129 @@
+table bikeshare_station_info
+	lineageTag: 21a82567-f843-465a-aa54-c63e78220746
+
+	column station_id
+		dataType: string
+		lineageTag: 5ad46864-9479-48a6-bf17-9fcfaaca24a6
+		summarizeBy: none
+		sourceColumn: station_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 0ed3746b-424d-4b57-aa35-99a1682f7b63
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column short_name
+		dataType: string
+		lineageTag: 17c7aa55-e995-42bf-800e-1b3c1fa19bbc
+		summarizeBy: none
+		sourceColumn: short_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column lat
+		dataType: double
+		lineageTag: 74d47c29-09e4-4159-b0f4-96f1fff57706
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: lat
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lon
+		dataType: double
+		lineageTag: 1569cecb-2674-4c1a-b9a2-e000c75bb228
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: lon
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column region_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 07386aeb-bd8d-4af9-80ea-ab183c16fa03
+		summarizeBy: none
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rental_methods
+		dataType: string
+		lineageTag: bc850560-0819-49b3-a1dd-f00eb5bf86de
+		summarizeBy: none
+		sourceColumn: rental_methods
+
+		annotation SummarizationSetBy = Automatic
+
+	column capacity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8705b819-d07d-4fec-89d0-c9ec02e02403
+		summarizeBy: sum
+		sourceColumn: capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column external_id
+		dataType: string
+		lineageTag: f092af3f-9956-42d9-921f-38ba79ced33c
+		summarizeBy: none
+		sourceColumn: external_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column eightd_has_key_dispenser
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 46fa3afc-97ad-4aba-97a1-d3e20d7a3e93
+		summarizeBy: none
+		sourceColumn: eightd_has_key_dispenser
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_kiosk
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3032a0ad-360f-4070-9f73-e3e713398e53
+		summarizeBy: none
+		sourceColumn: has_kiosk
+
+		annotation SummarizationSetBy = Automatic
+
+	column station_geom
+		dataType: string
+		lineageTag: c68fb905-44d4-490f-a620-dd12f140fe84
+		summarizeBy: none
+		sourceColumn: station_geom
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'name Иерархия'
+		lineageTag: b86c821c-f567-4f25-b4e3-bdd7a7522279
+
+		level name
+			lineageTag: 3e483819-9e69-4b2a-965e-a2a7e3f0dba8
+			column: name
+
+	partition bikeshare_station_info = m
+		mode: import
+		source =
+				let
+				    Source = GoogleBigQuery.Database([Implementation="2.0"]),
+				    #"bigquery-public-data_Database" = Source{[Name="bigquery-public-data",Kind="Database"]}[Data],
+				    san_francisco_bikeshare_Schema = #"bigquery-public-data_Database"{[Name="san_francisco_bikeshare",Kind="Schema"]}[Data],
+				    bikeshare_station_info_Table = san_francisco_bikeshare_Schema{[Name="bikeshare_station_info",Kind="Table"]}[Data]
+				in
+				    bikeshare_station_info_Table
+
+	annotation PBI_ResultType = Table
+

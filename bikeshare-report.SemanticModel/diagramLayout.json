@@ -1,0 +1,73 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 18,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 450,
+            "y": 0
+          },
+          "nodeIndex": "bikeshare_regions",
+          "nodeLineageTag": "d5f69562-4a04-44f4-a8fe-8fb0e72379b9",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 18,
+            "y": 0
+          },
+          "nodeIndex": "bikeshare_station_info",
+          "nodeLineageTag": "21a82567-f843-465a-aa54-c63e78220746",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 631,
+            "y": 208
+          },
+          "nodeIndex": "bikeshare_trips",
+          "nodeLineageTag": "aa595035-d614-4d1c-a007-ba1eaf130202",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 897,
+            "y": 154
+          },
+          "nodeIndex": "Календарь",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "Все таблицы",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Все таблицы",
+  "defaultDiagram": "Все таблицы"
+}

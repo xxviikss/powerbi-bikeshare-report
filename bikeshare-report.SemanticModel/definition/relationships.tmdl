@@ -1,0 +1,22 @@
+relationship 9679af8a-3f76-4181-9c38-37f2482c2cf4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bikeshare_trips.start_date
+	toColumn: LocalDateTable_e78276fc-6bf3-4328-81d6-e4f3dd0719aa.Date
+
+relationship e504346a-0110-4f99-8485-7262006d85c0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: bikeshare_trips.end_date
+	toColumn: LocalDateTable_d53a6ade-5fa9-4b29-aef7-8abc355c8c47.Date
+
+relationship AutoDetected_b443f17c-7703-41dd-8b84-b90d549942b0
+	fromColumn: bikeshare_station_info.region_id
+	toColumn: bikeshare_regions.region_id
+
+relationship ba6ea856-f1fd-8027-f7fd-ff56f07e834f
+	fromColumn: bikeshare_trips.start_station_id
+	toColumn: bikeshare_station_info.station_id
+
+relationship 0cb35ed9-13b0-1f9d-d7dd-8d664a047f31
+	fromColumn: bikeshare_trips.'Дата начала'
+	toColumn: Календарь.Date
+
